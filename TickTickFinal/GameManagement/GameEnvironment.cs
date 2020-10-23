@@ -112,9 +112,11 @@ public class GameEnvironment : Game
     // update the camera matrix translation
     public void UpdateCamera()
     {
-        if (TickTick.gameStateManager.CurrentGameState == TickTick.gameStateManager.GetGameState("playingState"))
+        PlayingState CurrentState = TickTick.GameStateManager.CurrentGameState as PlayingState;
+        if (CurrentState is PlayingState)
         {
-            spriteScale = Matrix.CreateScale(inputHelper.Scale.X, inputHelper.Scale.Y, 1) * Camera.GetTranslation();
+            Camera.Update(CurrentState.CurrentLevel.Find("player").Position);
+            spriteScale = Camera.GetTranslation() * Matrix.CreateScale(inputHelper.Scale.X, inputHelper.Scale.Y, 1);
         }
         else
         {

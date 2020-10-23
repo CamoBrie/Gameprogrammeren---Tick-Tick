@@ -1,0 +1,10 @@
+﻿>> GameEnvironment.cs - r113
+> Added UpdateCamera()
+> runs each tick, updates the camera position etc and applies the matrix to the spritescale, only if in the playingstate.
+
+>> Camera.cs
+> The camera class
+> This class handles everything around the camera, etc, getting data via parameters and returning it via methods.
+
+>> LevelLoading.cs - 45
+> Pass the total level size to the camera class

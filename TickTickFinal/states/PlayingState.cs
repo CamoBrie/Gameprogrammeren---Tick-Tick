@@ -49,7 +49,6 @@ class PlayingState : IGameLoopObject
 
     public virtual void Update(GameTime gameTime)
     {
-        //update the camera only when in the playing state
         CurrentLevel.Update(gameTime);
         if (CurrentLevel.GameOver)
         {

@@ -42,6 +42,7 @@ partial class Level : GameObjectList
                 tiles.Add(t, x, y);
             }
         }
+        Camera.SetLevelSize(width * tiles.CellWidth, textLines.Count * tiles.CellHeight);
     }
 
     private Tile LoadTile(char tileType, int x, int y)
