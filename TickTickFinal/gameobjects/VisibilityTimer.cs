@@ -6,7 +6,7 @@ class VisibilityTimer : GameObject
     protected float timeLeft;
     protected float totalTime;
 
-    public VisibilityTimer(GameObject target, int layer=0, string id = "")
+    public VisibilityTimer(GameObject target, int layer = 0, string id = "")
         : base(layer, id)
     {
         totalTime = 5;

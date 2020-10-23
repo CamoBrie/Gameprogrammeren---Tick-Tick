@@ -10,7 +10,7 @@ partial class Level : GameObjectList
         {
             Reset();
             GameEnvironment.GameStateManager.SwitchTo("levelMenu");
-        }      
+        }
     }
 
     public override void Update(GameTime gameTime)
@@ -31,7 +31,7 @@ partial class Level : GameObjectList
         {
             player.Explode();
         }
-                       
+
         // check if we won
         if (Completed && timer.Running)
         {

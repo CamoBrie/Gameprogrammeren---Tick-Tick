@@ -3,10 +3,11 @@ using System;
 
 class TickTick : GameEnvironment
 {
+    public static GameEnvironment game;
     [STAThread]
     static void Main()
     {
-        TickTick game = new TickTick();
+        game = new TickTick();
         game.Run();
     }
 
@@ -22,7 +23,7 @@ class TickTick : GameEnvironment
         screen = new Point(1440, 825);
         windowSize = new Point(1024, 586);
         FullScreen = false;
-        
+
         gameStateManager.AddGameState("titleMenu", new TitleMenuState());
         gameStateManager.AddGameState("helpState", new HelpState());
         gameStateManager.AddGameState("playingState", new PlayingState(Content));

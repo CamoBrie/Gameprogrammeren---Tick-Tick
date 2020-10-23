@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using System.IO;
-using Microsoft.Xna.Framework;
 
 partial class Level : GameObjectList
 {
@@ -111,8 +111,8 @@ partial class Level : GameObjectList
         {
             case 'A': enemy = new UnpredictableEnemy(); break;
             case 'B': enemy = new PlayerFollowingEnemy(); break;
-            case 'C': 
-            default:  enemy = new PatrollingEnemy(); break;
+            case 'C':
+            default: enemy = new PatrollingEnemy(); break;
         }
         enemy.Position = new Vector2(((float)x + 0.5f) * tiles.CellWidth, (y + 1) * tiles.CellHeight);
         enemies.Add(enemy);
@@ -154,7 +154,7 @@ partial class Level : GameObjectList
     {
         TileField tiles = Find("tiles") as TileField;
         SpriteGameObject exitObj = new SpriteGameObject("Sprites/spr_goal", 1, "exit");
-        exitObj.Position = new Vector2(x * tiles.CellWidth, (y+1) * tiles.CellHeight);
+        exitObj.Position = new Vector2(x * tiles.CellWidth, (y + 1) * tiles.CellHeight);
         exitObj.Origin = new Vector2(0, exitObj.Height);
         Add(exitObj);
         return new Tile();

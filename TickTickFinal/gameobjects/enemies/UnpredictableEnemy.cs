@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using System;
 
 class UnpredictableEnemy : PatrollingEnemy
 {
@@ -11,7 +11,7 @@ class UnpredictableEnemy : PatrollingEnemy
             return;
         }
         TurnAround();
-        velocity.X = Math.Sign(velocity.X) * (float)GameEnvironment.Random.NextDouble() * 5.0f;       
+        velocity.X = Math.Sign(velocity.X) * (float)GameEnvironment.Random.NextDouble() * 5.0f;
     }
 }
 

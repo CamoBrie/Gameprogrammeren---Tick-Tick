@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 public class GameEnvironment : Game
 {
@@ -109,6 +109,19 @@ public class GameEnvironment : Game
         spriteBatch = new SpriteBatch(GraphicsDevice);
     }
 
+    // update the camera matrix translation
+    public void UpdateCamera()
+    {
+        if (TickTick.gameStateManager.CurrentGameState == TickTick.gameStateManager.GetGameState("playingState"))
+        {
+            spriteScale = Matrix.CreateScale(inputHelper.Scale.X, inputHelper.Scale.Y, 1) * Camera.GetTranslation();
+        }
+        else
+        {
+            spriteScale = Matrix.CreateScale(inputHelper.Scale.X, inputHelper.Scale.Y, 1);
+        }
+    }
+
     protected void HandleInput()
     {
         inputHelper.Update();
@@ -127,6 +140,7 @@ public class GameEnvironment : Game
     {
         HandleInput();
         gameStateManager.Update(gameTime);
+        TickTick.game.UpdateCamera();
     }
 
     protected override void Draw(GameTime gameTime)
