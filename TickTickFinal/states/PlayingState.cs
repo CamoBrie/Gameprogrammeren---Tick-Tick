@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using System.IO;
 
 class PlayingState : IGameLoopObject
 {
@@ -49,6 +49,7 @@ class PlayingState : IGameLoopObject
 
     public virtual void Update(GameTime gameTime)
     {
+        //update the camera only when in the playing state
         CurrentLevel.Update(gameTime);
         if (CurrentLevel.GameOver)
         {

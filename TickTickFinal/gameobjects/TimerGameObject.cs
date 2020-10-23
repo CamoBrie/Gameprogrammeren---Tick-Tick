@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using System;
 
 class TimerGameObject : TextGameObject
 {
@@ -51,7 +51,7 @@ class TimerGameObject : TextGameObject
 
     public double Multiplier
     {
-        get {return multiplier; }
+        get { return multiplier; }
         set { multiplier = value; }
     }
 

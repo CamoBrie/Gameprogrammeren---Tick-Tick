@@ -1,14 +1,14 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using System;
 
-partial class Player :  AnimatedGameObject
+partial class Player : AnimatedGameObject
 {
     public void Jump(float speed = 1100)
     {
         velocity.Y = -speed;
         GameEnvironment.AssetManager.PlaySound("Sounds/snd_player_jump");
     }
-    
+
     private void DoPhysics()
     {
         if (!exploded)
