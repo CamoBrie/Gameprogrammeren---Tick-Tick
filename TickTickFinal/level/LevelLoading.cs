@@ -45,6 +45,14 @@ partial class Level : GameObjectList
         Camera.SetLevelSize(width * tiles.CellWidth, textLines.Count * tiles.CellHeight);
     }
 
+    public Vector2 LoadLevelSize(string path)
+    {
+        string[] content = File.ReadAllLines(path);
+
+        // -1 for the metadata
+        return new Vector2(content[0].Length, content.Length - 1);
+    }
+
     private Tile LoadTile(char tileType, int x, int y)
     {
         switch (tileType)

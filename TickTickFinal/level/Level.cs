@@ -7,18 +7,21 @@ partial class Level : GameObjectList
 
     public Level(int levelIndex)
     {
+        Vector2 LevelSize = LoadLevelSize("Content/Levels/" + levelIndex + ".txt");
+        int CellWidth = 72;
+        int CellHeight = 55;
         // load the backgrounds
         GameObjectList backgrounds = new GameObjectList(0, "backgrounds");
         SpriteGameObject backgroundSky = new SpriteGameObject("Backgrounds/spr_sky");
-        backgroundSky.Position = new Vector2(0, GameEnvironment.Screen.Y - backgroundSky.Height);
+        backgroundSky.Position = new Vector2(0, GameEnvironment.Screen.Y + LevelSize.Y * CellHeight - backgroundSky.Height);
         backgrounds.Add(backgroundSky);
 
         // add a few random mountains
         for (int i = 0; i < 5; i++)
         {
             SpriteGameObject mountain = new SpriteGameObject("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), 1);
-            mountain.Position = new Vector2((float)GameEnvironment.Random.NextDouble() * GameEnvironment.Screen.X - mountain.Width / 2,
-                GameEnvironment.Screen.Y - mountain.Height);
+            mountain.Position = new Vector2((float)GameEnvironment.Random.NextDouble() * LevelSize.X * CellWidth - mountain.Width / 2,
+                LevelSize.Y * CellHeight - mountain.Height);
             backgrounds.Add(mountain);
         }
 
@@ -40,7 +43,6 @@ partial class Level : GameObjectList
 
         Add(new GameObjectList(1, "waterdrops"));
         Add(new GameObjectList(2, "enemies"));
-
         LoadTiles("Content/Levels/" + levelIndex + ".txt");
     }
 

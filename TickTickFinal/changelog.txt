@@ -1,5 +1,6 @@
-﻿>> GameEnvironment.cs - r113
-> Added UpdateCamera()
+﻿>> GameEnvironment.cs - 113
+
+> updates the camera methods
 > runs each tick, updates the camera position etc and applies the matrix to the spritescale, only if in the playingstate.
 
 >> Camera.cs
@@ -8,3 +9,20 @@
 
 >> LevelLoading.cs - 45
 > Pass the total level size to the camera class
+
+>> Add a level
+> LevelMenuState.cs - 18 - change loop to total levels
+> PlayingState.cs - 91 - change loop to total levels
+> add the file
+> add a row to levelstatus
+
+>> Level.cs - 10
+> get the width and height of the level beforehand
+> we do this so we can align background objects
+> this change is also reflected later on in the constructor
+
+>> LevelLoading.cs - 48
+> load the width and height of the current file
+
+>>Gameenvironment - 151
+> change the background color to the color of the sky
