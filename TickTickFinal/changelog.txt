@@ -48,3 +48,6 @@
 
 >> LevelMenuState.cs
 > let the camera know the current level
+
+>> TickTick.cs
+> sound be gone
