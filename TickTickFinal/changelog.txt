@@ -6,6 +6,7 @@
 >> Camera.cs
 > The camera class
 > This class handles everything around the camera, etc, getting data via parameters and returning it via methods.
+> Keeps track of level sizes and uses the current level size to determine the total view it can access
 
 >> LevelLoading.cs - 45
 > Pass the total level size to the camera class
@@ -24,5 +25,26 @@
 >> LevelLoading.cs - 48
 > load the width and height of the current file
 
->>Gameenvironment - 151
+>> GameEnvironment.cs - 151
 > change the background color to the color of the sky
+
+>> GameEnvironment.cs - 116
+> Let the camera stay at the current position while in the GameOver or FinitsedLevel state.
+
+>> GameObject.cs 
+> Added an IsUI boolean to keep track of if the object is an ui element and needs to stay fixed
+
+>> SpriteGameObject.cs - 30
+> Changed the drawing function if the object is an UI object
+
+>> TextGameObject.cs - 21
+> Changed the drawing function if the object is an UI object
+
+>> Level.cs
+> Changed relevant objects part of the ui (33, 37, 42)
+
+>> LevelLoading.cs
+> Changed relevant objects part of the ui (24, 28)
+
+>> LevelMenuState.cs
+> let the camera know the current level
