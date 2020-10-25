@@ -26,3 +26,6 @@
 
 >>Gameenvironment - 151
 > change the background color to the color of the sky
+
+>>TickTick.cs - 35
+> fuck the sound I stg

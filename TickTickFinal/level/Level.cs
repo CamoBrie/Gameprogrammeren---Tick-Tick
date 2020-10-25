@@ -30,13 +30,16 @@ partial class Level : GameObjectList
         Add(backgrounds);
 
         SpriteGameObject timerBackground = new SpriteGameObject("Sprites/spr_timer", 100);
+        timerBackground.isUI = true;
         timerBackground.Position = new Vector2(10, 10);
         Add(timerBackground);
         TimerGameObject timer = new TimerGameObject(101, "timer");
+        timer.isUI = true;
         timer.Position = new Vector2(25, 30);
         Add(timer);
 
         quitButton = new Button("Sprites/spr_button_quit", 100);
+        quitButton.isUI = true;
         quitButton.Position = new Vector2(GameEnvironment.Screen.X - quitButton.Width - 10, 10);
         Add(quitButton);
 

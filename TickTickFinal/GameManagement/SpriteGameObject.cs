@@ -26,7 +26,16 @@ public class SpriteGameObject : GameObject
         {
             return;
         }
-        sprite.Draw(spriteBatch, this.GlobalPosition, origin);
+
+        if (isUI)
+        {
+            sprite.Draw(spriteBatch, this.GlobalPosition + Camera.TopLeftPosition, origin);
+        }
+        else 
+        {
+            sprite.Draw(spriteBatch, this.GlobalPosition, origin); 
+        }
+        
     }
 
     public SpriteSheet Sprite
