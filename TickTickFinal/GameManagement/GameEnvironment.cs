@@ -17,6 +17,9 @@ public class GameEnvironment : Game
     protected static AssetManager assetManager;
     protected static GameSettingsManager gameSettingsManager;
 
+    //Total levels:
+    public static int LevelAmount = 11;
+
     public GameEnvironment()
     {
         graphics = new GraphicsDeviceManager(this);
@@ -146,7 +149,7 @@ public class GameEnvironment : Game
     {
         HandleInput();
         gameStateManager.Update(gameTime);
-        TickTick.game.UpdateCamera();
+        UpdateCamera();
     }
 
     protected override void Draw(GameTime gameTime)

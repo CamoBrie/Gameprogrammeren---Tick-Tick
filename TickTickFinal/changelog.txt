@@ -12,8 +12,7 @@
 > Pass the total level size to the camera class
 
 >> Add a level
-> LevelMenuState.cs - 18 - change loop to total levels
-> PlayingState.cs - 91 - change loop to total levels
+> Update the variable in GameEnvironment.cs - 21
 > add the file
 > add a row to levelstatus
 
@@ -27,6 +26,9 @@
 
 >> GameEnvironment.cs - 151
 > change the background color to the color of the sky
+
+>> GameEnvironment.cs - 21
+> variable to keep track of the total amount of levels
 
 >> GameEnvironment.cs - 116
 > Let the camera stay at the current position while in the GameOver or FinitsedLevel state.
