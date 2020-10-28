@@ -53,3 +53,12 @@
 
 >> TickTick.cs
 > sound be gone
+
+>> SpriteGameObject.cs - 37
+> added the parallax offset in the drawing function
+
+>> Level.cs - 26
+> made the mountain generate a random parallax speed
+
+>> LevelFinishedState.cs, GameOverState.cs  - 14
+> made it ui
