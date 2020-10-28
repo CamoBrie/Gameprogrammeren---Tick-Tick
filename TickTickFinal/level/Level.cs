@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 partial class Level : GameObjectList
 {
@@ -22,6 +23,7 @@ partial class Level : GameObjectList
             SpriteGameObject mountain = new SpriteGameObject("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), 1);
             mountain.Position = new Vector2((float)GameEnvironment.Random.NextDouble() * LevelSize.X * CellWidth - mountain.Width / 2,
                 LevelSize.Y * CellHeight - mountain.Height);
+            mountain.parralaxSpeed = GameEnvironment.Random.NextDouble();
             backgrounds.Add(mountain);
         }
 

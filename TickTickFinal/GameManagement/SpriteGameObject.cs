@@ -6,6 +6,7 @@ public class SpriteGameObject : GameObject
     protected SpriteSheet sprite;
     protected Vector2 origin;
     public bool PerPixelCollisionDetection = true;
+    public double parralaxSpeed = 1.0;
 
     public SpriteGameObject(string assetName, int layer = 0, string id = "", int sheetIndex = 0)
         : base(layer, id)
@@ -33,7 +34,14 @@ public class SpriteGameObject : GameObject
         }
         else 
         {
-            sprite.Draw(spriteBatch, this.GlobalPosition, origin); 
+            if (parralaxSpeed == 1)
+            {
+                sprite.Draw(spriteBatch, this.GlobalPosition, origin);
+            }
+            else
+            {
+                sprite.Draw(spriteBatch, this.GlobalPosition - new Vector2(Camera.TopLeftPosition.X * (float)parralaxSpeed, 0), origin);
+            }
         }
         
     }

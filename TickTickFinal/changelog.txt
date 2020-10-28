@@ -31,7 +31,7 @@
 > variable to keep track of the total amount of levels
 
 >> GameEnvironment.cs - 116
-> Let the camera stay at the current position while in the GameOver or FinitsedLevel state.
+> Let the camera stay at the current position while in the GameOver or FinishedLevel state.
 
 >> GameObject.cs 
 > Added an IsUI boolean to keep track of if the object is an ui element and needs to stay fixed
