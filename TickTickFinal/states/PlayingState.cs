@@ -49,7 +49,6 @@ class PlayingState : IGameLoopObject
 
     public virtual void Update(GameTime gameTime)
     {
-        //update the camera only when in the playing state
         CurrentLevel.Update(gameTime);
         if (CurrentLevel.GameOver)
         {
@@ -89,7 +88,7 @@ class PlayingState : IGameLoopObject
 
     public void LoadLevels()
     {
-        for (int currLevel = 1; currLevel <= 10; currLevel++)
+        for (int currLevel = 1; currLevel <= GameEnvironment.LevelAmount; currLevel++)
         {
             levels.Add(new Level(currLevel));
         }

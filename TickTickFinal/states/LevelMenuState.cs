@@ -15,7 +15,7 @@ class LevelMenuState : GameObjectList
         Add(background);
 
         // add the level buttons
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < GameEnvironment.LevelAmount; i++)
         {
             int row = i / 4;
             int column = i % 4;
@@ -54,6 +54,7 @@ class LevelMenuState : GameObjectList
         {
             PlayingState playingState = GameEnvironment.GameStateManager.GetGameState("playingState") as PlayingState;
             playingState.CurrentLevelIndex = LevelSelected - 1;
+            Camera.SetCurrentLevel(LevelSelected - 1);
             GameEnvironment.GameStateManager.SwitchTo("playingState");
         }
         else if (backButton.Pressed)

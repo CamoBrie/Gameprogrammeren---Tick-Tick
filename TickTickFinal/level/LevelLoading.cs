@@ -21,9 +21,11 @@ partial class Level : GameObjectList
         Add(hintField);
         string hint = textLines[textLines.Count - 1];
         SpriteGameObject hintFrame = new SpriteGameObject("Overlays/spr_frame_hint", 1);
+        hintFrame.isUI = true;
         hintField.Position = new Vector2((GameEnvironment.Screen.X - hintFrame.Width) / 2, 10);
         hintField.Add(hintFrame);
         TextGameObject hintText = new TextGameObject("Fonts/HintFont", 2);
+        hintText.isUI = true;
         hintText.Text = textLines[textLines.Count - 1];
         hintText.Position = new Vector2(120, 25);
         hintText.Color = Color.Black;
@@ -42,6 +44,15 @@ partial class Level : GameObjectList
                 tiles.Add(t, x, y);
             }
         }
+        Camera.SetLevelSize(width * tiles.CellWidth, textLines.Count * tiles.CellHeight);
+    }
+
+    public Vector2 LoadLevelSize(string path)
+    {
+        string[] content = File.ReadAllLines(path);
+
+        // -1 for the metadata
+        return new Vector2(content[0].Length, content.Length - 1);
     }
 
     private Tile LoadTile(char tileType, int x, int y)

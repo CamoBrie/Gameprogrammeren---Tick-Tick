@@ -17,6 +17,9 @@ public class GameEnvironment : Game
     protected static AssetManager assetManager;
     protected static GameSettingsManager gameSettingsManager;
 
+    //Total levels:
+    public static int LevelAmount = 11;
+
     public GameEnvironment()
     {
         graphics = new GraphicsDeviceManager(this);
@@ -111,10 +114,16 @@ public class GameEnvironment : Game
 
     // update the camera matrix translation
     public void UpdateCamera()
-    {
-        if (TickTick.gameStateManager.CurrentGameState == TickTick.gameStateManager.GetGameState("playingState"))
+    {;
+        PlayingState CurrentState = GameStateManager.CurrentGameState as PlayingState;
+        if (CurrentState is PlayingState || GameStateManager.CurrentGameState is GameOverState || GameStateManager.CurrentGameState is LevelFinishedState)
         {
-            spriteScale = Matrix.CreateScale(inputHelper.Scale.X, inputHelper.Scale.Y, 1) * Camera.GetTranslation();
+            Camera.SetScreenSize(screen.X, screen.Y);
+            if (CurrentState is PlayingState)
+            {
+                Camera.Update(CurrentState.CurrentLevel.Find("player").Position);
+            }
+            spriteScale = Camera.GetTranslation() * Matrix.CreateScale(inputHelper.Scale.X, inputHelper.Scale.Y, 1);
         }
         else
         {
@@ -140,12 +149,12 @@ public class GameEnvironment : Game
     {
         HandleInput();
         gameStateManager.Update(gameTime);
-        TickTick.game.UpdateCamera();
+        UpdateCamera();
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.Black);
+        GraphicsDevice.Clear(new Color(72, 130, 255));
         spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, spriteScale);
         gameStateManager.Draw(gameTime, spriteBatch);
         spriteBatch.End();
