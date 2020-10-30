@@ -62,3 +62,12 @@
 
 >> LevelFinishedState.cs, GameOverState.cs  - 14
 > made it ui
+
+>> GameObject.cs - 40
+> added an overload for the reset method, so the rocket class can have a 'soft-reset', this just makes it so 
+> the rocket class has different behaviour if the game is gameover or if the player jumped on the rocket.
+
+>> Rocket.cs
+> added a variable to keep track of if the rocket is 'dead' (has been jumped on)
+> Updated the reset method so it can have different behaviour if it is a soft reset or not
+> in CheckPlayerCollision -> if the player hits the rocket from above, make the rocket dead and let the character jump.

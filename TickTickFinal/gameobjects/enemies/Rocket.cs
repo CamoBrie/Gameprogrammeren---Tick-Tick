@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 class Rocket : AnimatedGameObject
 {
     protected double spawnTime;
     protected Vector2 startPosition;
+    protected bool isDead = false;
 
     public Rocket(bool moveToLeft, Vector2 startPosition)
     {
@@ -14,12 +16,16 @@ class Rocket : AnimatedGameObject
         Reset();
     }
 
-    public override void Reset()
+    public override void Reset(bool softReset = false)
     {
         visible = false;
         position = startPosition;
         velocity = Vector2.Zero;
         spawnTime = GameEnvironment.Random.NextDouble() * 5;
+        if(!softReset)
+        {
+            isDead = true;
+        }
     }
 
     public override void Update(GameTime gameTime)
@@ -30,7 +36,10 @@ class Rocket : AnimatedGameObject
             spawnTime -= gameTime.ElapsedGameTime.TotalSeconds;
             return;
         }
-        visible = true;
+        if (!isDead) 
+        { 
+           visible = true;
+        }
         velocity.X = 600;
         if (Mirror)
         {
@@ -41,15 +50,23 @@ class Rocket : AnimatedGameObject
         Rectangle screenBox = new Rectangle(0, 0, GameEnvironment.Screen.X, GameEnvironment.Screen.Y);
         if (!screenBox.Intersects(this.BoundingBox))
         {
-            Reset();
+            Reset(true);
         }
     }
 
     public void CheckPlayerCollision()
     {
         Player player = GameWorld.Find("player") as Player;
-        if (CollidesWith(player) && visible)
+        if (CollidesWith(player) && visible && !isDead)
         {
+            Console.WriteLine($"player: {player.Position.Y}, rocket: {position.Y}");
+            if(player.Position.Y  < position.Y)
+            {
+                isDead = true;
+                visible = false;
+                player.Jump();
+                return;
+            }
             player.Die(false);
         }
     }
