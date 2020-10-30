@@ -26,6 +26,8 @@ partial class Player : AnimatedGameObject
         isOnTheGround = false;
         walkingOnIce = false;
         walkingOnHot = false;
+        walkingOnSpeed = false;
+        walkingOnSlow = false;
 
         TileField tiles = GameWorld.Find("tiles") as TileField;
         int xFloor = (int)position.X / tiles.CellWidth;
@@ -66,6 +68,8 @@ partial class Player : AnimatedGameObject
                     {
                         walkingOnIce = walkingOnIce || currentTile.Ice;
                         walkingOnHot = walkingOnHot || currentTile.Hot;
+                        walkingOnSpeed = walkingOnSpeed || currentTile.Speed;
+                        walkingOnSlow = walkingOnSlow || currentTile.Slow;
                     }
                 }
                 if (tileType == TileType.Normal || isOnTheGround)

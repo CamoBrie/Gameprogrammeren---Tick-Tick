@@ -9,7 +9,7 @@ partial class Player : AnimatedGameObject
     protected bool isAlive;
     protected bool exploded;
     protected bool finished;
-    protected bool walkingOnIce, walkingOnHot;
+    protected bool walkingOnIce, walkingOnHot, walkingOnSpeed, walkingOnSlow;
 
     public Player(Vector2 start) : base(2, "player")
     {
@@ -34,6 +34,8 @@ partial class Player : AnimatedGameObject
         finished = false;
         walkingOnIce = false;
         walkingOnHot = false;
+        walkingOnSlow = false;
+        walkingOnSpeed = false;
         PlayAnimation("idle");
         previousYPosition = BoundingBox.Bottom;
     }
@@ -45,6 +47,20 @@ partial class Player : AnimatedGameObject
         {
             walkingSpeed *= 1.5f;
         }
+
+        if (walkingOnSpeed)
+        {
+            walkingSpeed = 600;
+        }
+        else if (walkingOnSlow)
+        {
+            walkingSpeed = 200;
+        }
+        else
+        {
+            walkingSpeed = 400;
+        }
+
         if (!isAlive)
         {
             return;

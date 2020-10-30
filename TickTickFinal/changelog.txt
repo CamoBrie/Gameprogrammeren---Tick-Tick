@@ -84,3 +84,15 @@
 >> LevelLoading.cs - 37
 > check if the 2nd timer parameter exists at the last line of the file, which would be our time parameter.
 > if it exists, set the timer to that value
+
+>> LevelLoading.cs
+> added the two tiles to the levelloading
+
+>> Player.cs
+> changed the walkspeed if the player is on the tiles
+
+>> PlayerPhysics.cs
+> changed the variables if the player is standing ontop of the slow or speed tiles
+
+>> Tile.cs
+> added the variables to the tile class

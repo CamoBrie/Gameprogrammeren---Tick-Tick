@@ -86,6 +86,12 @@ partial class Level : GameObjectList
                 return LoadBasicTile("spr_wall_hot", TileType.Normal, true, false);
             case '*':
                 return LoadBasicTile("spr_wall_ice", TileType.Normal, false, true);
+                //speed
+            case 'Q':
+                return LoadBasicTile("spr_wall_speed", TileType.Normal, false, false, true, false);
+            case 'D':
+                return LoadBasicTile("spr_wall_slow", TileType.Normal, false, false, false, true);
+
             case 'T':
                 return LoadTurtleTile(x, y);
             case 'R':
@@ -103,11 +109,13 @@ partial class Level : GameObjectList
         }
     }
 
-    private Tile LoadBasicTile(string name, TileType tileType, bool hot = false, bool ice = false)
+    private Tile LoadBasicTile(string name, TileType tileType, bool hot = false, bool ice = false, bool speed = false, bool slow = false)
     {
         Tile t = new Tile("Tiles/" + name, tileType);
         t.Hot = hot;
         t.Ice = ice;
+        t.Speed = speed;
+        t.Slow = slow;
         return t;
     }
 
