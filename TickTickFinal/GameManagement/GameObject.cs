@@ -42,6 +42,11 @@ public abstract class GameObject : IGameLoopObject
     {
 
     }
+    //Only for the timer class
+    public virtual void Reset(int totalTime)
+    {
+
+    }
 
     public virtual Vector2 Position
     {
