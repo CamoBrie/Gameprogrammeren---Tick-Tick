@@ -37,6 +37,17 @@ public abstract class GameObject : IGameLoopObject
         visible = true;
     }
 
+    //Only for the rocket class, this is to define if it is a hard reset or soft reset
+    public virtual void Reset(bool x)
+    {
+
+    }
+    //Only for the timer class
+    public virtual void Reset(int totalTime)
+    {
+
+    }
+
     public virtual Vector2 Position
     {
         get { return position; }

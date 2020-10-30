@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.IO;
+using System.Linq;
 
 partial class Level : GameObjectList
 {
@@ -48,7 +50,7 @@ partial class Level : GameObjectList
 
         Add(new GameObjectList(1, "waterdrops"));
         Add(new GameObjectList(2, "enemies"));
-        LoadTiles("Content/Levels/" + levelIndex + ".txt");
+        LoadTiles("Content/Levels/" + levelIndex + ".txt", ref timer);
     }
 
     public bool Completed

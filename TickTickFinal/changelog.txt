@@ -62,3 +62,25 @@
 
 >> LevelFinishedState.cs, GameOverState.cs  - 14
 > made it ui
+
+>> GameObject.cs - 40
+> added an overload for the reset method, so the rocket class can have a 'soft-reset', this just makes it so 
+> the rocket class has different behaviour if the game is gameover or if the player jumped on the rocket.
+
+>> Rocket.cs
+> added a variable to keep track of if the rocket is 'dead' (has been jumped on)
+> Updated the reset method so it can have different behaviour if it is a soft reset or not
+> in CheckPlayerCollision -> if the player hits the rocket from above, make the rocket dead and let the character jump.
+
+>> GameObject.cs
+> added an overload for the reset method, so the timer can have a custom value, instead of just the default 30.
+
+>> TimerGameObject.cs
+> changed the reset method so that it accepts a custom value for the time
+
+>> Level.cs
+> pass the timer object as reference to the LoadLevel method
+
+>> LevelLoading.cs - 37
+> check if the 2nd timer parameter exists at the last line of the file, which would be our time parameter.
+> if it exists, set the timer to that value

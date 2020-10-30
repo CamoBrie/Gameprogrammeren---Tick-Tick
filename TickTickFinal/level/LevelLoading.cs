@@ -1,10 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
 partial class Level : GameObjectList
 {
-    public void LoadTiles(string path)
+    public void LoadTiles(string path, ref TimerGameObject timer)
     {
         List<string> textLines = new List<string>();
         StreamReader fileReader = new StreamReader(path);
@@ -19,20 +20,26 @@ partial class Level : GameObjectList
 
         GameObjectList hintField = new GameObjectList(100);
         Add(hintField);
-        string hint = textLines[textLines.Count - 1];
+        //get the metadata from the last line
+        string[] metadata = textLines[textLines.Count - 1].Split("|".ToCharArray()[0]);
         SpriteGameObject hintFrame = new SpriteGameObject("Overlays/spr_frame_hint", 1);
         hintFrame.isUI = true;
         hintField.Position = new Vector2((GameEnvironment.Screen.X - hintFrame.Width) / 2, 10);
         hintField.Add(hintFrame);
         TextGameObject hintText = new TextGameObject("Fonts/HintFont", 2);
         hintText.isUI = true;
-        hintText.Text = textLines[textLines.Count - 1];
+        hintText.Text = metadata[0];
         hintText.Position = new Vector2(120, 25);
         hintText.Color = Color.Black;
         hintField.Add(hintText);
         VisibilityTimer hintTimer = new VisibilityTimer(hintField, 1, "hintTimer");
         Add(hintTimer);
-
+        if (metadata.Length > 1)
+        {
+            int.TryParse(metadata[1], out int time);
+            timer.Reset(time);
+        }
+        Console.WriteLine(timer.Text);
         Add(tiles);
         tiles.CellWidth = 72;
         tiles.CellHeight = 55;
