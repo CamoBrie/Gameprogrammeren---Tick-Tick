@@ -22,6 +22,7 @@ partial class Level : GameObjectList
         Add(hintField);
         //get the metadata from the last line
         string[] metadata = textLines[textLines.Count - 1].Split("|".ToCharArray()[0]);
+
         SpriteGameObject hintFrame = new SpriteGameObject("Overlays/spr_frame_hint", 1);
         hintFrame.isUI = true;
         hintField.Position = new Vector2((GameEnvironment.Screen.X - hintFrame.Width) / 2, 10);
