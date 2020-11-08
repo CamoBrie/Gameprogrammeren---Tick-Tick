@@ -1,5 +1,15 @@
-﻿>> GameEnvironment.cs - 113
+﻿# disclaimer:
+de regelnummers zijn toegevoegd tijdens het schrijven van de code, het zou dus kunnen dat sommige changes wat regels
+verder zijn verschoven dan wat er in de change staat.
 
+# Changes
+
+>> TickTick.cs
+> sound be gone
+
+## Camera Changes
+
+>> GameEnvironment.cs - 113
 > updates the camera methods
 > runs each tick, updates the camera position etc and applies the matrix to the spritescale, only if in the playingstate.
 
@@ -8,30 +18,11 @@
 > This class handles everything around the camera, etc, getting data via parameters and returning it via methods.
 > Keeps track of level sizes and uses the current level size to determine the total view it can access
 
->> LevelLoading.cs - 45
-> Pass the total level size to the camera class
-
->> Add a level
-> Update the variable in GameEnvironment.cs - 21
-> add the file
-> add a row to levelstatus
-
->> Level.cs - 10
-> get the width and height of the level beforehand
-> we do this so we can align background objects
-> this change is also reflected later on in the constructor
-
->> LevelLoading.cs - 48
-> load the width and height of the current file
+>> GameEnvironment.cs - 116
+> Let the camera stay at the current position while in the GameOver or FinishedLevel state.
 
 >> GameEnvironment.cs - 151
 > change the background color to the color of the sky
-
->> GameEnvironment.cs - 21
-> variable to keep track of the total amount of levels
-
->> GameEnvironment.cs - 116
-> Let the camera stay at the current position while in the GameOver or FinishedLevel state.
 
 >> GameObject.cs 
 > Added an IsUI boolean to keep track of if the object is an ui element and needs to stay fixed
@@ -49,10 +40,7 @@
 > Changed relevant objects part of the ui (24, 28)
 
 >> LevelMenuState.cs
-> let the camera know the current level
-
->> TickTick.cs
-> sound be gone
+> let the camera know the current level, so it can see the size of it.
 
 >> SpriteGameObject.cs - 37
 > added the parallax offset in the drawing function
@@ -61,7 +49,30 @@
 > made the mountain generate a random parallax speed
 
 >> LevelFinishedState.cs, GameOverState.cs  - 14
-> made it ui
+> made it an ui element
+
+## Level Changes
+
+>> GameEnvironment.cs - 21
+> variable to keep track of the total amount of levels
+
+>> LevelLoading.cs - 45
+> Pass the total level size to the camera class
+
+>> Level.cs - 10
+> get the width and height of the level beforehand
+> we do this so we can align background objects
+> this change is also reflected later on in the constructor
+
+>> Add a level
+> Update the variable in GameEnvironment.cs - 21
+> add the file
+> add a row to levelstatus
+
+>> LevelLoading.cs - 48
+> load the width and height of the current file
+
+## Rocket jumping changes
 
 >> GameObject.cs - 40
 > added an overload for the reset method, so the rocket class can have a 'soft-reset', this just makes it so 
@@ -75,6 +86,8 @@
 >> GameObject.cs
 > added an overload for the reset method, so the timer can have a custom value, instead of just the default 30.
 
+## Timer changes
+
 >> TimerGameObject.cs
 > changed the reset method so that it accepts a custom value for the time
 
@@ -84,6 +97,8 @@
 >> LevelLoading.cs - 37
 > check if the 2nd timer parameter exists at the last line of the file, which would be our time parameter.
 > if it exists, set the timer to that value
+
+## Speed/Slow tile changes
 
 >> LevelLoading.cs
 > added the two tiles to the levelloading
@@ -95,4 +110,4 @@
 > changed the variables if the player is standing ontop of the slow or speed tiles
 
 >> Tile.cs
-> added the variables to the tile class
+> added the variables to the tile class, for the speedy and slow tiles
